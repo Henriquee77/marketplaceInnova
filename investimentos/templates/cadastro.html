@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Cadastro - Marketplace Financeiro{% endblock %}
+
+{% block content %}
+    <h1>Cadastro</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Usuário:</label>
+        <input type="text" name="username" required>
+        <label for="password">Senha:</label>
+        <input type="password" name="password" required>
+        <button type="submit">Cadastrar</button>
+    </form>
+    <p>Já tem uma conta? <a href="{% url 'login' %}">Faça login aqui</a></p>
+{% endblock %}

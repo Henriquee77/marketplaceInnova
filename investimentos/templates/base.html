@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Marketplace Financeiro{% endblock %}</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
