@@ -1,14 +1,30 @@
+<!-- base.html -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Marketplace Financeiro{% endblock %}</title>
-    <!-- Link para o arquivo CSS -->
+    <!-- Importando a fonte 'Roboto' do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Link para os arquivos CSS -->
+    <link rel="stylesheet" href="{% static 'css/components/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Meta tag para responsividade -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+    <!-- Incluindo o header -->
+    {% include 'includes/header.html' %}
+    
+    <!-- Conteúdo principal -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    
+    <!-- Incluindo o footer -->
+    {% include 'includes/footer.html' %}
 </body>
 </html>

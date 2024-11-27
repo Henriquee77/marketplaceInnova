@@ -1,62 +1,127 @@
+/* style.css */
+
+/* Aplica o layout flex ao body */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Altura mínima para ocupar toda a tela */
 }
 
+/* O main ocupa o espaço restante */
+main {
+    flex: 1; /* Expande para ocupar o espaço disponível */
+}
+
+/* Footer fixado ao final da página */
+footer {
+    background-color: #ecf0f1;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #7f8c8d;
+    border-top: 1px solid #dfe6e9;
+}
+
+
 h1 {
-    color: #333;
+    color: #2c3e50;
+    text-align: center;
+    margin-top: 50px;
+    font-weight: 600;
 }
 
 form {
     background-color: #fff;
-    padding: 20px;
-    margin: 50px auto;
-    width: 300px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin: 30px auto;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 label {
     display: block;
-    margin-top: 10px;
-    color: #555;
+    margin-top: 20px;
+    color: #34495e;
+    font-size: 14px;
 }
 
 input[type="text"],
 input[type="password"] {
     width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 12px 15px;
+    margin-top: 8px;
+    border: 1px solid #ccd1d9;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #ecf0f1;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #1abc9c;
+    outline: none;
 }
 
 button {
-    margin-top: 20px;
+    margin-top: 30px;
     width: 100%;
-    padding: 10px;
-    background-color: #007bff;
+    padding: 14px;
+    background-color: #1abc9c;
     border: none;
     color: #fff;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #16a085;
 }
 
 p {
     text-align: center;
+    font-size: 14px;
+    color: #7f8c8d;
 }
 
 a {
-    color: #007bff;
+    color: #1abc9c;
     text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+.home-container {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.home-container h1 {
+    font-size: 28px;
+    color: #2c3e50;
+}
+
+.home-container p {
+    font-size: 18px;
+    color: #7f8c8d;
+    margin-top: 20px;
+}
+
+
+.error-message {
+    color: #e74c3c;
+    text-align: center;
+    margin-top: 15px;
+}
+
+@media (max-width: 600px) {
+    form {
+        padding: 30px;
+        margin: 20px;
+    }
 }

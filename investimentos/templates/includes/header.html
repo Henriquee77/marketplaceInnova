@@ -1,0 +1,19 @@
+<!-- header.html -->
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <h1><a href="{% url 'home' %}">Marketplace Financeiro</a></h1>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}" class="nav-link">Sair</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}" class="nav-link">Login</a></li>
+                    <li><a href="{% url 'cadastro' %}" class="nav-link">Cadastro</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</header>

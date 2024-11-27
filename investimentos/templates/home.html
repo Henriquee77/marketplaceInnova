@@ -1,8 +1,11 @@
+<!-- home.html -->
 {% extends 'base.html' %}
 
 {% block title %}Home - Marketplace Financeiro{% endblock %}
 
 {% block content %}
-    <h1>Bem-vindo, {{ user.username }}!</h1>
-    <p>Você está autenticado.</p>
+    <div class="home-container">
+        <h1>Bem-vindo, {{ user.username }}!</h1>
+        <p>Você está autenticado.</p>
+    </div>
 {% endblock %}
