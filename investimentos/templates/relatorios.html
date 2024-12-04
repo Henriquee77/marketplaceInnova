@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Relatórios de Investimentos{% endblock %}
+
+{% block content %}
+<div class="relatorios-container">
+    <h1>Relatórios de Investimentos</h1>
+    
+    <section class="resumo">
+        <h2>Resumo Financeiro</h2>
+        <p><strong>Total Investido:</strong> R$ {{ total_investido|floatformat:2 }}</p>
+        <p><strong>Total Vendido:</strong> R$ {{ total_vendido|floatformat:2 }}</p>
+        <p><strong>Saldo Atual:</strong> R$ {{ saldo_atual|floatformat:2 }}</p>
+    </section>
+    
+    <section class="historico-transacoes">
+        <h2>Histórico de Transações</h2>
+        {% if transacoes %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Ativo</th>
+                        <th>Tipo</th>
+                        <th>Quantidade</th>
+                        <th>Preço Unitário</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transacao in transacoes %}
+                    <tr>
+                        <td>{{ transacao.data|date:"d/m/Y H:i" }}</td>
+                        <td>{{ transacao.ativo.nome }}</td>
+                        <td>{{ transacao.tipo }}</td>
+                        <td>{{ transacao.quantidade }}</td>
+                        <td>R$ {{ transacao.preco_unitario }}</td>
+                        <td>R$ {{ transacao.preco_unitario|floatformat:2|add:0.00|floatformat:2 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Não há transações registradas.</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

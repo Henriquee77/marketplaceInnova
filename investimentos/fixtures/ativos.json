@@ -1,0 +1,29 @@
+[
+    {
+        "model": "investimentos.ativo",
+        "pk": 1,
+        "fields": {
+            "nome": "Ação XYZ",
+            "preco": 50.00,
+            "descricao": "Ação da empresa XYZ"
+        }
+    },
+    {
+        "model": "investimentos.ativo",
+        "pk": 2,
+        "fields": {
+            "nome": "Título ABC",
+            "preco": 100.00,
+            "descricao": "Título de renda fixa ABC"
+        }
+    },
+    {
+        "model": "investimentos.ativo",
+        "pk": 3,
+        "fields": {
+            "nome": "Fundo Imobiliário DEF",
+            "preco": 75.00,
+            "descricao": "Fundo imobiliário DEF"
+        }
+    }
+]

@@ -1,11 +1,29 @@
-<!-- home.html -->
 {% extends 'base.html' %}
 
 {% block title %}Home - Marketplace Financeiro{% endblock %}
 
 {% block content %}
-    <div class="home-container">
-        <h1>Bem-vindo, {{ user.username }}!</h1>
-        <p>Você está autenticado.</p>
-    </div>
+<div class="home-container">
+    <h1>Bem-vindo, {{ user.username }}!</h1>
+
+    <!-- Exibe o saldo disponível e saldo investido -->
+    <section class="saldos">
+        <h2>Seus Saldos</h2>
+        <p><strong>Saldo Disponível:</strong> R$ {{ saldo_virtual }}</p>
+        <p><strong>Saldo Investido:</strong> R$ {{ saldo_investido }}</p>
+    </section>
+
+    <!-- Ações -->
+    <section class="acoes">
+        <h2>Ações Rápidas</h2>
+        <a href="{% url 'relatorios' %}" class="botao">Relatórios</a>
+        <a href="{% url 'historico' %}" class="botao">Histórico</a>
+        <a href="{% url 'pagina_comprar' %}" class="botao">Comprar Ativos</a>
+        <a href="{% url 'pagina_vender' %}" class="botao">Vender Ativos</a>
+    </section>
+    <form method="POST" action="{% url 'atualizar_simulacao' %}">
+        {% csrf_token %}
+        <button type="submit">Atualizar Simulação</button>
+    </form>
+</div>
 {% endblock %}

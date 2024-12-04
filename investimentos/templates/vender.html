@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Página de Venda{% endblock %}
+
+{% block content %}
+<div class="vender-container">
+    <h1>Vender Ativos</h1>
+    <a href="{% url 'home' %}" class="botao-voltar">Voltar para o Início</a>
+
+    <!-- Portfólio do Usuário -->
+    <section class="portfolio">
+        <h2>Seus Ativos</h2>
+        {% if portfolio %}
+        <ul>
+            {% for item in portfolio %}
+            <li>
+                <h3>{{ item.ativo.nome }}</h3>
+                <p><strong>Quantidade:</strong> {{ item.quantidade }}</p>
+                <p><strong>Valor Total:</strong> R$ {{ item.valor_total }}</p>
+                <form method="POST" action="{% url 'vender_ativo' item.ativo.id %}">
+                    {% csrf_token %}
+                    <label for="quantidade">Quantidade:</label>
+                    <input type="number" name="quantidade" id="quantidade" min="1" max="{{ item.quantidade }}" required>
+                    <button type="submit" class="botao-vender">Vender</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Seu portfólio está vazio.</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

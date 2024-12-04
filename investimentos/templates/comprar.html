@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Página de Compra{% endblock %}
+
+{% block content %}
+<div class="comprar-container">
+    <h1>Comprar Ativos</h1>
+
+    <!-- Botão de Voltar para a Página Inicial -->
+    <a href="{% url 'home' %}" class="botao-voltar">Voltar para o Início</a>
+
+    <!-- Exibe mensagens de erro e sucesso -->
+    {% if messages %}
+    <div class="alert-container">
+        {% for message in messages %}
+            <div class="alert {% if message.level == 40 %}alert-danger{% else %}alert-success{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Ativos Disponíveis -->
+    <section class="ativos-disponiveis">
+        <h2>Ativos Disponíveis</h2>
+        
+        {% if ativos %}
+        <div class="ativos-lista">
+            {% for ativo in ativos %}
+            <div class="ativo-item">
+                <h3>{{ ativo.nome }}</h3>
+                <p><strong>Preço Atual:</strong> R$ {{ ativo.preco }}</p>
+
+                <!-- Formulário de Compra -->
+                <form method="POST" action="{% url 'comprar_ativo' ativo.id %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <label for="quantidade">Quantidade:</label>
+                        <input type="number" name="quantidade" id="quantidade" min="1" required>
+                    </div>
+                    <button type="submit" class="botao-comprar">Comprar</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>Não há ativos disponíveis no momento.</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}
